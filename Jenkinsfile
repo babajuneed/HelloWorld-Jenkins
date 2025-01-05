@@ -2,10 +2,6 @@ pipeline {
     agent any
     tools {
         maven 'M3'
-        sonar 'sonar'
-    }
-    environment {
-        SONAR_HOME = tool 'sonar'
     }
     stages {
         stage('Git Checkout') {
@@ -21,18 +17,6 @@ pipeline {
         stage('Unit Test') {
             steps {
                 sh 'mvn test'
-            }
-        }
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('sonar-server') {
-                    sh """
-                        "${env.SONAR_HOME}/bin/sonar-scanner" \
-                        -Dsonar.projectName=HelloWorld-Jenkins \
-                        -Dsonar.java.binaries=. \
-                        -Dsonar.projectKey=HelloWorld-Jenkins
-                    """
-                }
             }
         }
         stage('Dependency Scan') {
