@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'M3'
-        //sonar 'sonar'
+        sonar 'sonar'
     }
     environment {
         SONAR_HOME = tool 'sonar'
