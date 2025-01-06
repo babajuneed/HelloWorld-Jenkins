@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git changelog: false, poll: false, url: 'hhttps://github.com/babajuneed/HelloWorld-Jenkins.git'
+                git changelog: false, poll: false, url: 'https://github.com/babajuneed/HelloWorld-Jenkins.git'
             }
         }
         stage('Code Compile') {
