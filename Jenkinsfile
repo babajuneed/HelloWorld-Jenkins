@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Deploy Artifact To Tomcat') {
             steps {
-                sh 'cp %WORKSPACE%/target/helloworld-jenkins-3.3.5.war /var/lib/tomcat9/webapps/'
+                sh 'cp /var/lib/jenkins/workspace/Blue_Ocean_Jenkins_pipeline_main/target/helloworld-jenkins-3.3.5.war /var/lib/tomcat9/webapps/'
                 sh 'sudo service tomcat9 restart'
             }
         }
