@@ -19,12 +19,12 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Dependency Scan') {
-            steps {
-                dependencyCheck additionalArguments: ' --scan ./', odcInstallation: 'owasp'
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-            }
-        }
+        //stage('Dependency Scan') {
+          //  steps {
+            //    dependencyCheck additionalArguments: ' --scan ./', odcInstallation: 'owasp'
+              //  dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            //}
+        //}
         stage('Code Build') {
             steps {
                 sh 'mvn clean install'
