@@ -30,6 +30,12 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+        stage('Install Tomcat') {
+            steps {
+                sh 'sudo apt update'
+                sh 'sudo apt install -y tomcat9 || { echo "Tomcat installation failed"; exit 1; }'
+            }
+        }
         stage('Deploy Artifact To Tomcat') {
             steps {
                 sh 'cp /var/lib/jenkins/workspace/Blue_Ocean_Jenkins_pipeline_main/target/helloworld-jenkins-3.3.5.war /var/lib/tomcat9/webapps/'
